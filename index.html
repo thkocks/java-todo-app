@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>TodoList</title>
@@ -75,6 +76,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>TodoList</h1>
@@ -91,18 +93,35 @@
       <li class="todo completed">
         <input id="todo-2" type="checkbox" checked>
         <label for="todo-2">Dust the vases</label>
-      </li>
     </ul>
     <div class="footer">
-      Todo: <span id="todo-count">1</span> •
-      Done: <span id="completed-count">0</span> •
-      Total: <span id="total-count">1</span>
+      Todo: <span id="todo-count">1</span> • Done: <span id="completed-count">0</span> • Total: <span id="total-count">1</span>
     </div>
   </div>
 
   <script>
-  	// JavaScript code comes here...
-  </script>
+    // select the element containing the count
+    var totalCount = document.getElementById('total-count');
 
+    // count the number of todo's by their class name
+    var totalTodos = document.getElementsByClassName("todo").length;
+
+    // update the HTML inside the counter element
+    totalCount.innerHTML = totalTodos;
+
+    function toggleDone() {
+      var checkbox = this;
+
+      //check checkbox status
+      if (checkbox.checked) {
+        checkbox.parentElement.className = "todo completed";
+      }
+      else {
+        checkbox.parentElement.className = "todo";
+      }
+      updateCounters();
+    }
+  </script>
 </body>
+
 </html>
